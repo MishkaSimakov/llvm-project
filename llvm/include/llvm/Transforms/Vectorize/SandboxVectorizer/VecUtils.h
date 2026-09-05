@@ -403,6 +403,40 @@ public:
     }
   };
 
+  /// Utility class to collect and erase dead instructions.
+  class DeadInstructionMorgue {
+  public:
+    DeadInstructionMorgue() = default;
+    DeadInstructionMorgue(const DeadInstructionMorgue &) = delete;
+
+    /// After we create vectors for groups of instructions, the original
+    /// instructions are potentially dead and may need to be removed. This
+    /// function helps collect these instructions (along with the pointer
+    /// operands for loads/stores) so that they can be cleaned up later.
+    void collectPotentiallyDeadInstrs(ArrayRef<Value *> Bndl);
+
+    /// Erases all dead instructions from the dead instruction candidates
+    /// collected during vectorization. Also clear the DeadInstrCandidates.
+    void tryEraseDeadInstrs();
+
+#ifndef NDEBUG
+    void print(raw_ostream &OS) const {
+      OS << "DeadInstrCandidates: [\n";
+      for (auto *C : DeadInstrCandidates) {
+        OS << *C << ",\n";
+      }
+      OS << "]\n";
+    }
+    LLVM_DUMP_METHOD void debug() const {
+      print(dbgs());
+      dbgs() << '\n';
+    }
+#endif /* NDEBUG */
+
+  private:
+    DenseSet<Instruction *> DeadInstrCandidates;
+  };
+
   /// Helper for creating LaneValueEnumerator ranges. Can be used in for loops
   /// like: `for (auto [Lane, V] : enumerateLanes(Range))`
   template <typename ValueContainerT>

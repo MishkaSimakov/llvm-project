@@ -19,7 +19,7 @@ entry:
 }
 attributes #0 = { "zos-ppa1-name"="name" }
 
-; CHECK:L#PPA1_sourcename_0 DS 0B
+; CHECK:L#PPA1_sourcename_0 DS 0H
 ; CHECK-NEXT: DC XL1'02'
 ; CHECK-NEXT: DC XL1'CE'
 ; CHECK-NEXT: DC XL2'0000'

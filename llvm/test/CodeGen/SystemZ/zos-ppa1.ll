@@ -84,7 +84,7 @@ entry:
 declare i32 @other(ptr, i32)
 
 ; CHECK:      * PPA1
-; CHECK-NEXT: L#PPA1_leaf_0 DS 0B
+; CHECK-NEXT: L#PPA1_leaf_0 DS 0H
 ; CHECK-NEXT: * Version
 ; CHECK-NEXT:  DC XL1'02'
 ; CHECK-NEXT: * LE Signature X'CE'
@@ -122,7 +122,7 @@ declare i32 @other(ptr, i32)
 ; CHECK-NEXT:  DC AD(L#EPM_leaf_0-L#PPA1_leaf_0)
 
 ; CHECK-NEXT: * PPA1
-; CHECK-NEXT: L#PPA1_nonleaf_0 DS 0B
+; CHECK-NEXT: L#PPA1_nonleaf_0 DS 0H
 ; CHECK-NEXT: * Version
 ; CHECK-NEXT:  DC XL1'02'
 ; CHECK-NEXT: * LE Signature X'CE'
@@ -162,7 +162,7 @@ declare i32 @other(ptr, i32)
 ; CHECK-NEXT:  DC AD(L#EPM_nonleaf_0-L#PPA1_nonleaf_0)
 
 ; CHECK-NEXT: * PPA1
-; CHECK-NEXT: L#PPA1_withalloca_0 DS 0B
+; CHECK-NEXT: L#PPA1_withalloca_0 DS 0H
 ; CHECK-NEXT: * Version
 ; CHECK-NEXT:  DC XL1'02'
 ; CHECK-NEXT: * LE Signature X'CE'
@@ -206,7 +206,7 @@ declare i32 @other(ptr, i32)
 
 ; Attribute "zos-ppa1-name"="" removes the function name from PPA1.
 ; CHECK: * PPA1
-; CHECK-NEXT: L#PPA1_no_name_0 DS 0B
+; CHECK-NEXT: L#PPA1_no_name_0 DS 0H
 ; CHECK:      * PPA1 Flags 4
 ; CHECK-NEXT:  DC XL1'80'
 ; CHECK-NEXT: * Length/4 of Parms

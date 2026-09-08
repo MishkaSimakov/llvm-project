@@ -48,22 +48,22 @@ define hidden void @fHasAlloca() {
 
 declare void @foo(i64)
 
-; CHECK-LABEL: L#PPA1_fSmallOutArgArea_0 DS 0B
+; CHECK-LABEL: L#PPA1_fSmallOutArgArea_0 DS 0H
 ; CHECK: * PPA1 Flags 3
 ; CHECK:  DC XL1'00'
 
-; CHECK-LABEL: L#PPA1_fLargeOutArgArea_0 DS 0B
+; CHECK-LABEL: L#PPA1_fLargeOutArgArea_0 DS 0H
 ; CHECK: * PPA1 Flags 3
 ; CHECK: *   Bit 1: 1 = Argument Area Length is in optional area
 ; CHECK:  DC XL1'40'
 ; CHECK: * Argument Area Length
 ; CHECK:  DC XL4'00000140'
 
-; CHECK-LABEL: L#PPA1_fLargeParm_0 DS 0B
+; CHECK-LABEL: L#PPA1_fLargeParm_0 DS 0H
 ; CHECK: * Length/4 of Parms
 ; CHECK:  DC XL2'0042'
 
-; CHECK-LABEL: L#PPA1_fHasAlloca_0 DS 0B
+; CHECK-LABEL: L#PPA1_fHasAlloca_0 DS 0H
 ; CHECK: * PPA1 Flags 3
 ; CHECK: *   Bit 1: 1 = Argument Area Length is in optional area
 ; CHECK:  DC XL1'40'
